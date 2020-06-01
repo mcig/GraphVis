@@ -10,6 +10,7 @@ function mouseDragged() {
 }
 
 function keyPressed() {
+  //// TODO: solve the first click is missed bug  
   if (keyCode === SHIFT) {
     detectedDims.push(mouseX);
     detectedDims.push(mouseY);
@@ -22,6 +23,10 @@ function keyPressed() {
         detectedDims.pop();
       }
     }
+    else if(detectedDims.length >= 4){//the second click is missed
+      for (let i = 0; i < 4; i++)
+        detectedDims.splice(2,2);
+      }
   }
   else if (keyCode === DELETE && findNodeByCoord(mouseX, mouseY)) {
     let value = findNodeByCoord(mouseX, mouseY).data;
