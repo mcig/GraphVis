@@ -98,7 +98,7 @@ function createTableAndPath(posObject, txtPath, txtTable, retObj) {
   txtPath.html("Path: " + '<br>' + retObj.path);
   txtPath.position(posObject.x, posObject.y + 30);
   txtTable.html("Table: " + '<br>' + retObj.table);
-  txtTable.position(posObject.x, posObject.y + 70);
+  txtTable.position(posObject.x, txtPath.y + 80);
 }
 
 //Node Actions

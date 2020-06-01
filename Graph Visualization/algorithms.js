@@ -1,11 +1,13 @@
-//Dijkstra Vol 3 Somehow works
-function dijkstraForAllNodes(nodes,key,retObj) {
+function dijkstraForAllNodes(globalArr,key,retObj) {
   let Q = [];
+  let nodes = [...globalArr];
+
   for (let node of nodes) {
     node.distance = Infinity;
     node.prev = NaN;
    Q.push(node);
   }
+
   let keyIdx = nodeIdxFinder(Q,key);
   Q[keyIdx].distance = 0;
   Q[keyIdx].prev = Q[keyIdx];
@@ -15,10 +17,6 @@ function dijkstraForAllNodes(nodes,key,retObj) {
     let u = minElement(Q);
     let connectionsArr = u.connections;
     findRemove(Q,u);
-
-    console.log(u);
-    console.log(Q);
-
     for (let connection of connectionsArr) {
         let v = connection.node;
 
@@ -30,10 +28,10 @@ function dijkstraForAllNodes(nodes,key,retObj) {
     }
     for(let node of nodes)
       txtDist += node.distance.toString() + " ";
-    retObj.table = retObj.table.concat("Node: " + u.data +" Distances: " + txtDist + '<br>');
+    retObj.table = retObj.table.concat("Node " + u.data +" Distances: " + txtDist + '<br>');
   }
   for(let node of nodes)
-    retObj.path = retObj.path.concat(node.prev.data + " ");
+    retObj.path = retObj.path.concat("Node " + node.data + "," + node.prev.data + " ");
 }
 
 function minElement(nodeArr){
@@ -53,4 +51,34 @@ function findRemove(nodeArr,node){
       return;
     }
   }
+}
+
+function prims_mst(globalArr,retObj){
+  // check geeks by geeks for additional Info;
+  //src = https://www.geeksforgeeks.org/prims-minimum-spanning-tree-mst-greedy-algo-5/;
+  // 1) Create a set mstSet that keeps track of vertices already included in MST.
+  // 2) Assign a key value to all vertices in the input graph.
+  // Initialize all key values as INFINITE.
+  // Assign key value as 0 for the first vertex so that it is picked first.
+  // 3) While mstSet doesn’t include all vertices
+  // ….a) Pick a vertex u which is not there in mstSet and has minimum key value.
+  // ….b) Include u to mstSet.
+  // ….c) Update key value of all adjacent vertices of u.
+  //  To update the key values, iterate through all adjacent vertices.
+  //  For every adjacent of v, if weight of edge u-v is less than the previous key value of v,
+  //   update the key value as weight of u-v
+
+  // let mst = [];
+  // let nodes = [...globalArr];
+  // //As our node class already has an attribute called distance we will use it
+  // //instead of creating a new attribute called key
+  // for(let node of nodes){
+  //   node.distance = Infinity;
+  // }
+  // nodes[0].distance = 0;
+  //
+  // while(mst.length!=nodes.length){
+  //   let u = minElement(Q);
+  //   findRemove(Q,u);
+  // }
 }
