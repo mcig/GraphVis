@@ -10,31 +10,33 @@ function mouseDragged() {
 }
 
 function keyPressed() {
-  //// TODO: solve the first click is missed bug  
+  //// TODO: solve the first click is missed bug
   if (keyCode === SHIFT) {
     detectedDims.push(mouseX);
     detectedDims.push(mouseY);
-    if (detectedDims.length >= 4 && findNodeByCoord(detectedDims[0], detectedDims[1]) &&
+    //basicaly we store the last 2 if they are valid
+    //and if they are all valid ve draw a connection
+    if (detectedDims.length >= 4 && findNodeByCoord(detectedDims[0], detectedDims[1]) && //this is just spaghetti
       findNodeByCoord(detectedDims[2], detectedDims[3])) {
       let fromIdx = nodeIdxFinder(nodes, findNodeByCoord(detectedDims[0], detectedDims[1]).data);
       let toIdx = nodeIdxFinder(nodes, findNodeByCoord(detectedDims[2], detectedDims[3]).data);
-      nodes[fromIdx].connect(nodes[toIdx], int(newEdgeWeightInp.value()));
+      let weightVal = int(newEdgeWeightInp.value());
+      if (!weightVal)
+        weightVal = 0;
+      nodes[fromIdx].connect(nodes[toIdx], weightVal);
       for (let i = 0; i < 4; i++) {
         detectedDims.pop();
       }
-    }
-    else if(detectedDims.length >= 4){//the second click is missed
+    } else if (detectedDims.length >= 4) { //the second click is missed
       for (let i = 0; i < 4; i++)
-        detectedDims.splice(2,2);
-      }
-  }
-  else if (keyCode === DELETE && findNodeByCoord(mouseX, mouseY)) {
+        detectedDims.splice(2, 2);
+    }
+  } else if (keyCode === DELETE && findNodeByCoord(mouseX, mouseY)) {
     let value = findNodeByCoord(mouseX, mouseY).data;
     let idx = nodeIdxFinder(nodes, value);
     deleteNodeOnPress(idx, value.toString());
-  }
-  else if (keyCode === ENTER) {
-    newNodeOnPress(mouseX,mouseY);
+  } else if (keyCode === ENTER) {
+    newNodeOnPress(mouseX, mouseY);
   }
 }
 

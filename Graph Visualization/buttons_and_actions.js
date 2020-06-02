@@ -3,6 +3,7 @@ let selArr = []; //array of Selection Elements
 function createDomElements() {
   createGraphButtons();
   createAlgoButtons();
+  createDataIoButtons();
 }
 
 function createGraphButtons() {
@@ -36,8 +37,8 @@ function createGraphButtons() {
   deleteNodeButton.position(deleteNodeSel.x + 50, height + 10);
   deleteNodeButton.mousePressed(() => {
     let value = deleteNodeSel.value();
-    let deleteNodeIdx = nodeIdxFinder(nodes,value);
-    deleteNodeOnPress(deleteNodeIdx,value);
+    let deleteNodeIdx = nodeIdxFinder(nodes, value);
+    deleteNodeOnPress(deleteNodeIdx, value);
   });
 
 
@@ -101,8 +102,49 @@ function createTableAndPath(posObject, txtPath, txtTable, retObj) {
   txtTable.position(posObject.x, txtPath.y + 80);
 }
 
+function createDataIoButtons() {
+  //Much Thanks Daniel Shiffman(aka The Coding Train),
+  //for this amazing drag drop json trick and the whole p5 lessons :D
+  dropHereBox = select("#dropHereBox");
+  dropHereBox.dragOver(() => highlightUnhighlight(1));
+  dropHereBox.dragLeave(() => highlightUnhighlight(0));
+  dropHereBox.drop((jsonGraph) => {
+    loadJSON(jsonGraph.data, (obj) => {
+      jsonToObject(obj);
+    });
+  }, () => highlightUnhighlight(0));
+
+  function highlightUnhighlight(highlight_bool) {
+    if (highlight_bool)
+      dropHereBox.style("background-color", "#ccc");
+    else
+      dropHereBox.style("background-color", "transparent");
+  }
+
+  dataDownloadButton = createButton("Download Graph");
+  dataDownloadButton.position(deleteNodeButton.x + 430, deleteNodeButton.y);
+  dataDownloadButton.mousePressed(() => {
+    saveJSON(nodes, 'graph.json');
+  });
+}
+function jsonToObject(obj){
+  for (x in obj) {
+    node = new Node();
+    node.x = obj[x].x;
+    node.y = obj[x].y;
+    node.data = obj[x].data;
+    node.r = obj[x].r;
+    node.connections = obj[x].connections;
+    node.distance = obj[x].distance;
+    node.prev = obj[x].prev;
+    nodes.push(node);
+    addNewSelections(node);
+    nodeIndexIter++;
+  }
+}
+
 //Node Actions
-function newNodeOnPress(coordX,coordY) {
+function newNodeOnPress(coordX, coordY) {
   let newNode = new Node(coordX, coordY, nodeIndexIter);
   nodeIndexIter++;
   nodes.push(newNode);
@@ -114,7 +156,7 @@ function addNewSelections(node) {
     sel.option(node.data.toString());
 }
 
-function deleteNodeOnPress(idx,value) {
+function deleteNodeOnPress(idx, value) {
   if (idx != -1) {
     clearIndirectEdges(nodes[i]);
     nodes.splice(idx, 1);
@@ -138,6 +180,8 @@ function newEdgeOnPress() {
   let fromVal = newEdgeFromSel.value();
   let toVal = newEdgeToSel.value();
   let weightVal = int(newEdgeWeightInp.value());
+  if (!weightVal)
+    weightVal = 0;
   let fromIdx = nodeIdxFinder(nodes, fromVal);
   let toIdx = nodeIdxFinder(nodes, toVal);
   nodes[fromIdx].connect(nodes[toIdx], weightVal);

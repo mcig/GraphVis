@@ -6,7 +6,7 @@ class ReturnObj {
 }
 
 class Connection {
-  constructor(node, weight = NaN, colorStr = NaN) {
+  constructor(node, weight = 0, colorStr = NaN) {
     this.node = node;
     this.weight = weight;
     this.colorStr = colorStr;
