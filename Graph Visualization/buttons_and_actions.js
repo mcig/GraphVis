@@ -93,8 +93,11 @@ function createAlgoButtons() {
   dijkstraSel = createSelect();
   dijkstraSel.position(dijkstraButton.x + textWidth("Dijkstra From Node: "), 10);
   selArr.push(dijkstraSel);
-}
 
+  // kruskalButton = createButton("Kruskal's MST");
+  // kruskalButton.position(dijkstraButton.x, dijkstraButton.y+30);
+  // kruskalButton.mousePressed(() => kruskal_mst(nodes));
+}
 function createTableAndPath(posObject, txtPath, txtTable, retObj) {
   txtPath.html("Path: " + '<br>' + retObj.path);
   txtPath.position(posObject.x, posObject.y + 30);
@@ -166,14 +169,12 @@ function deleteNodeOnPress(idx, value) {
 }
 
 function clearIndirectEdges(keyNode) {
-  for (let node of nodes) {
-    for (let i = 0; i < node.connections.length; i++) {
+  for (let node of nodes)
+    for (let i = 0; i < node.connections.length; i++)
       if (node.connections[i].node == keyNode) {
         node.connections.splice(i, 1);
         i--;
       }
-    }
-  }
 }
 
 function newEdgeOnPress() {
@@ -202,10 +203,10 @@ function deleteEdgeOnPress() {
   }
 }
 
-function nodeIdxFinder(nodesArr, key) {
+function nodeIdxFinder(nodesArr, keyVal) {
   //will become handy when generic data is stored
   for (i = 0; i < nodesArr.length; i++) {
-    if (nodesArr[i].data == key)
+    if (nodesArr[i].data == keyVal)
       return i;
   }
   return -1;
