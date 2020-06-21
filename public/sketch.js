@@ -10,7 +10,7 @@ const backgroundColor = 80;
 function setup() {
   createCanvas(1200, 800);
   textSize(txtSize);
-  alert("Welcome! You can use 'Enter' and 'Delete' to create" +
+  alert("Welcome! You can use 'Enter' and 'Delete' to create " +
   "or delete a node at mouse position!" +
   " Additionally, use the 'Shift' key to create an edge between nodes!"+
   " For that first hover over on a node and press 'Shift'."+
