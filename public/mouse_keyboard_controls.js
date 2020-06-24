@@ -10,7 +10,12 @@ function mouseDragged() {
 }
 
 function keyPressed() {
-  //// TODO: solve the first click is missed bug
+  //TODO: solve the first click is missed bug
+
+  //quick brake if we are out of bounds
+  if(mouseX>width||mouseX<0||mouseY>height||mouseY<0)
+    return;
+
   if (keyCode === SHIFT) {
     detectedDims.push(mouseX);
     detectedDims.push(mouseY);
