@@ -5,41 +5,119 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GraphVis Dev</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
   <style>
     body {
       padding: 0;
       margin: 0;
     }
   </style>
+</head>
+
+<body>
+
+
+
+  <nav class="navbar navbar-expand-md bg-dark">
+    <a class="navbar-brand" href="">
+      <img src="../WebsiteImages/Logo.jpeg" alt="Logo" style="width:60px">
+    </a>
+    <a class="navbar-brand text-light" href="">GraphVis</a>
+
+    <button class="navbar-toggler navbar-dark ml-auto" type="button" data-toggle="collapse" data-target="#navbarCollapseTarget" aria-controls="navbarCollapseTarget" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!--Navbar Toggled part-->
+    <div class="collapse navbar-collapse" id="navbarCollapseTarget">
+      <!--Navbar links ul-->
+      <ul class="navbar navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-primary" href="https://mcig.github.io/My-Test-Website/HomePage/home.html">My Website</a>
+        </li>
+        <!--My Accounts Dropdown-->
+        <li>
+          <button class="btn nav-item navbar-link dropdown">
+            <a class="nav-link dropdown-toggle text-light" id="navbardrop-media" data-toggle="dropdown">
+              My Other Accounts
+            </a>
+            <div class="dropdown-menu bg-dark">
+              <a class="dropdown-item text-light" href="https://github.com/mcig">
+                <img src="../WebsiteImages/Github.png" alt="GithubLogo" style="width:20px">
+                <span id="Github">My Github</span>
+              </a>
+              <a class="dropdown-item text-light" href="https://www.linkedin.com/in/mustafa-%C3%A7%C4%B1%C4%9F-g%C3%B6kp%C4%B1nar-462992193/">
+                <img src="../WebsiteImages/Linkedin.jpg" alt="LinkedInLogo" style="width:20px">
+                <span id="LinkedIn">My LinkedIn</span>
+              </a>
+              <a class="dropdown-item text-light" href="https://stackoverflow.com/users/12121172/mustafa-%c3%87%c4%b1%c4%9f-g%c3%b6kp%c4%b1nar">
+                <img src="../WebsiteImages/Stackoverflow.png" alt="StackoverflowLogo" style="width:20px">
+                <span id="Stackoverflow">My Stackoverflow</span>
+              </a>
+              <a class="dropdown-item text-light" href="https://www.codingame.com/profile/92ab798e84ec2f5f7a22f0edb2cdeee44394073">
+                <img src="../WebsiteImages/Codingame.png" alt="CodingameLogo" style="width:20px">
+                <span id="Codingame">My Codingame</span>
+              </a>
+            </div>
+          </button>
+        </li>
+      </ul>
+  </nav>
+
+  <div class="alert alert-info d-none d-md-block">
+    Welcome! You can use 'Enter' and 'Delete' to create or delete a node at
+     mouse position!
+   Additionally, use the 'Shift' key to create an edge between nodes!
+   For that first hover over on a node and press 'Shift'.
+   Then, hover over the want-to-connect node then press it again.
+   This will take the entered data from the input box 'Weight'
+     and create and edge for you. Cha cha real smooth!
+  </div>
+
+  <div class="alert alert-info d-md-none">
+    MOBILE
+  </div>
+
+  <div class="container">
+    <div id="canvasJumbotron" class="jumbotron">
+      
+    </div>
+  </div>
+
+ <div id="underCanvas" class="container">
+   <button id="newNodeButton" class="btn btn-primary">New Node In The Middle</button>
+   <div class="btn-group">
+     <button type="button" class="btn btn-danger">Delete Node</button>
+     <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       <span class="sr-only">Toggle Dropdown</span>
+       <span></span>
+     </button>
+
+     <!--Dropdown selections will spawn here-->
+     <div class="dropdown-menu nodeSelection">
+
+     </div>
+   </div>
+
+ </div>
+ <br><br><br><br><br>
+  <!--Bootstrap and jQuery CDN-->
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <!--My Libs-->
   <script src="libraries/p5.js"></script>
-   <!-- Not used: <script src="libraries/p5.sound.js"></script>  -->
   <script src="sketch.js"></script>
   <script src="classes.js"></script>
   <script src="buttons_and_actions.js"></script>
+  <script src="buttons-actions.js"></script>
   <script src="mouse_keyboard_controls.js"></script>
   <script src="algorithms.js"></script>
   <script  src="data_io.js"></script>
 
-
-</head>
-
-<style>
- #dropHereBox {
-   position: absolute;
-   left: 890px;
-   bottom: 0;
-   padding: 50px;
-   border-style: dashed;
-   font-size: 13pt;
-   width: 200px;
- }
- </style>
-</head>
-
-<body>
- <p id ="dropHereBox">
-   To Load A Graph, Drag Your .json File Here.
- </p>
 </body>
 
 </html>

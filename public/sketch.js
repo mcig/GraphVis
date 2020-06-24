@@ -1,5 +1,4 @@
 let nodes = [];
-let txtSize = 15;
 
 const pink = "#C21E56";
 const green = "#00E600";
@@ -7,9 +6,9 @@ const white = "#FFFFFF";
 const backgroundColor = 80;
 
 function setup() {
-  let canvas = createCanvas(1200, 800);
-  canvas.parent("canvasContainer")
-  textSize(txtSize);
+  let myCanvas = createCanvas(900,400);
+  myCanvas.parent(canvasJumbotron);
+  myCanvas.width = $('#canvasJumbotron')[0].clientWidth;
   createDomElements();
 }
 

@@ -1,9 +1,8 @@
-let selArr = []; //array of Selection Elements
 
 function createDomElements() {
   createGraphButtons();
   createAlgoButtons();
-  createDataIoButtons();
+  //createDataIoButtons();
 }
 
 function createGraphButtons() {
@@ -134,12 +133,7 @@ function createDataIoButtons() {
 
 
 //Node Actions
-function newNodeOnPress(coordX, coordY) {
-  let newNode = new Node(coordX, coordY, nodeIndexIter);
-  nodeIndexIter++;
-  nodes.push(newNode);
-  addNewSelections(newNode);
-}
+
 
 function addNewSelections(node) {
   for (sel of selArr)
