@@ -11,6 +11,10 @@ function mouseDragged() {
 
 function keyPressed() {
   //// TODO: solve the first click is missed bug
+
+  if(mouseX>width||mouseX<0||mouseY>height||mouseY<0)
+    return;
+
   if (keyCode === SHIFT) {
     detectedDims.push(mouseX);
     detectedDims.push(mouseY);
