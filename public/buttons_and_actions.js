@@ -140,14 +140,7 @@ function addNewSelections(node) {
     sel.option(node.data.toString());
 }
 
-function deleteNodeOnPress(idx, value) {
-  if (idx != -1) {
-    clearIndirectEdges(nodes[i]);
-    nodes.splice(idx, 1);
-    for (sel of selArr)
-      sel.disable(value);
-  }
-}
+
 
 function clearIndirectEdges(keyNode) {
   for (let node of nodes)

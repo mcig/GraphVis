@@ -8,13 +8,6 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
-  <style>
-    body {
-      padding: 0;
-      margin: 0;
-    }
-  </style>
 </head>
 
 <body>
@@ -83,21 +76,21 @@
 
   <div class="container">
     <div id="canvasJumbotron" class="jumbotron">
-      
+
     </div>
   </div>
 
  <div id="underCanvas" class="container">
    <button id="newNodeButton" class="btn btn-primary">New Node In The Middle</button>
    <div class="btn-group">
-     <button type="button" class="btn btn-danger">Delete Node</button>
+     <button id="deleteNodeButton" type="button" class="btn btn-danger">Delete Node</button>
      <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
        <span class="sr-only">Toggle Dropdown</span>
        <span></span>
      </button>
 
      <!--Dropdown selections will spawn here-->
-     <div class="dropdown-menu nodeSelection">
+     <div class="dropdown-menu deleteNodeSelection">
 
      </div>
    </div>

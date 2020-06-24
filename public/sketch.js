@@ -6,9 +6,8 @@ const white = "#FFFFFF";
 const backgroundColor = 80;
 
 function setup() {
-  let myCanvas = createCanvas(900,400);
+  let myCanvas = createCanvas(1050,800);
   myCanvas.parent(canvasJumbotron);
-  myCanvas.width = $('#canvasJumbotron')[0].clientWidth;
   createDomElements();
 }
 
