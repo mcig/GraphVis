@@ -1,5 +1,5 @@
 let nodes = [];
-
+let counter=0;
 const pink = "#C21E56";
 const green = "#00E600";
 const white = "#FFFFFF";
