@@ -1,12 +1,12 @@
 let nodes = [];
-let counter=0;
+let counter = 0;
 const pink = "#C21E56";
 const green = "#00E600";
 const white = "#FFFFFF";
 const backgroundColor = 80;
 
 function setup() {
-  let myCanvas = createCanvas(1050,800);
+  let myCanvas = createCanvas(1050, 800);
   myCanvas.parent(canvasJumbotron);
   createDomElements();
 }

@@ -1,7 +1,7 @@
 let detectedDims = [];
 
 function mouseDragged() {
-  if(mouseX>width||mouseX<0||mouseY>height||mouseY<0)
+  if (mouseX > width || mouseX < 0 || mouseY > height || mouseY < 0)
     return;
 
   //reverse search is used to hold the top-most ball first
@@ -16,10 +16,10 @@ function keyPressed() {
   //TODO: solve the first click is missed bug
 
   //quick brake if we are out of bounds
-  if(mouseX>width||mouseX<0||mouseY>height||mouseY<0)
+  if (mouseX > width || mouseX < 0 || mouseY > height || mouseY < 0)
     return;
-  switch(keyCode){
-    case(SHIFT):
+  switch (keyCode) {
+    case (SHIFT):
       detectedDims.push(mouseX);
       detectedDims.push(mouseY);
       //basicaly we store the last 2 if they are valid
@@ -40,15 +40,15 @@ function keyPressed() {
           detectedDims.splice(2, 2);
       }
       break;
-    case(DELETE):
-      if(!findNodeByCoord(mouseX, mouseY))
+    case (DELETE):
+      if (!findNodeByCoord(mouseX, mouseY))
         break;
       let value = findNodeByCoord(mouseX, mouseY).data;
       let idx = nodeIdxFinder(nodes, value);
-      deleteNodeOnPress(idx,value);
+      deleteNodeOnPress(idx, value);
       break;
-    case(ENTER):
-      newNodeOnPress(mouseX, mouseY,counter);
+    case (ENTER):
+      newNodeOnPress(mouseX, mouseY, counter);
       break;
   }
 }

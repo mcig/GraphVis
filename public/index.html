@@ -62,12 +62,12 @@
 
   <div class="alert alert-info d-none d-md-block">
     Welcome! You can use 'Enter' and 'Delete' to create or delete a node at
-     mouse position!
-   Additionally, use the 'Shift' key to create an edge between nodes!
-   For that first hover over on a node and press 'Shift'.
-   Then, hover over the want-to-connect node then press it again.
-   This will take the entered data from the input box 'Weight'
-     and create and edge for you. Cha cha real smooth!
+    mouse position!
+    Additionally, use the 'Shift' key to create an edge between nodes!
+    For that first hover over on a node and press 'Shift'.
+    Then, hover over the want-to-connect node then press it again.
+    This will take the entered data from the input box 'Weight'
+    and create and edge for you. Cha cha real smooth!
   </div>
 
   <div class="alert alert-info d-md-none">
@@ -80,22 +80,31 @@
     </div>
   </div>
 
- <div id="underCanvas" class="container">
-   <button id="newNodeButton" class="btn btn-primary">New Node In The Middle</button>
-   <div class="btn-group">
-     <button id="deleteNodeButton" type="button" class="btn btn-danger">Delete Node</button>
-     <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-       <span class="sr-only">Toggle Dropdown</span>
-       <span></span>
-     </button>
+  <div id="underCanvas" class="container">
+    <button id="newNodeButton" class="btn btn-primary">New Node In The Middle</button>
+    <div class="btn-group">
+      <button id="deleteNodeButton" type="button" class="btn btn-danger">Delete Node</button>
+      <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+        <span></span>
+      </button>
+      <!--Dropdown selections will spawn here-->
+      <div class="dropdown-menu deleteNodeSelection">
+      </div>
+    </div>
+    <form class="form-inline">
+      <div class="form-group mb-2">
+        <label for="WeightInputText" class="sr-only">Email</label>
+        <input type="text" readonly class="form-control-plaintext" id="WeightInputText" value="Enter Edge Weight Value:">
+      </div>
+      <div class="form-group mx-sm-1">
+        <label for="weightInput" class="sr-only">Weight</label>
+        <input type="weightInput" class="form-control" id="weightInput" placeholder="42">
+      </div>
+    </form>
+  </div>
 
-     <!--Dropdown selections will spawn here-->
-     <div class="dropdown-menu deleteNodeSelection">
-     </div>
-   </div>
-
- </div>
- <br><br><br><br><br>
+  <br><br><br><br><br>
   <!--Bootstrap and jQuery CDN-->
   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -108,7 +117,7 @@
   <script src="buttons-actions.js"></script>
   <script src="mouse_keyboard_controls.js"></script>
   <script src="algorithms.js"></script>
-  <script  src="data_io.js"></script>
+  <script src="data_io.js"></script>
 
 </body>
 

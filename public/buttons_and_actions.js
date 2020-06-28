@@ -17,29 +17,6 @@ function createGraphButtons() {
   weightSlider.position(txtUnWeightWeight.x +
     textWidth("Unweighted/Weighted: "), height + 80);
 
-  //For Nodes
-  newNodeButton = createButton(strNewNode);
-  newNodeButton.position(0, height + 10);
-  newNodeButton.mousePressed(() => newNodeOnPress(width / 2, height / 2));
-
-  let txtNode = createDiv("Node to delete: ");
-  txtNode.position(newNodeButton.x +
-    textWidth(strNewNode) + 40, height + 10);
-
-  deleteNodeSel = createSelect();
-  deleteNodeSel.position(txtNode.x + textWidth("Node 2 delete: "), height + 11);
-
-  selArr.push(deleteNodeSel);
-
-  deleteNodeButton = createButton(strDeleteNode);
-  deleteNodeButton.position(deleteNodeSel.x + 50, height + 10);
-  deleteNodeButton.mousePressed(() => {
-    let value = deleteNodeSel.value();
-    let deleteNodeIdx = nodeIdxFinder(nodes, value);
-    deleteNodeOnPress(deleteNodeIdx, value);
-  });
-
-
   //For Edges
   let txtFrom = createDiv("From Node: ");
   txtFrom.position(0, height + 50);
