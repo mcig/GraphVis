@@ -6,7 +6,7 @@ const white = "#FFFFFF";
 const backgroundColor = 80;
 
 function setup() {
-  let myCanvas = createCanvas(1050, 800);
+  let myCanvas = createCanvas($("#canvasJumbotron").width(),600);
   myCanvas.parent(canvasJumbotron);
   createDomElements();
 }
@@ -17,4 +17,8 @@ function draw() {
   strokeWeight(3);
   for (let node of nodes)
     node.appear();
+}
+
+function windowResized() {
+  resizeCanvas($("#canvasJumbotron").width(), 600);
 }
