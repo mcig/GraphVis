@@ -9,6 +9,14 @@ function mouseDragged() {
   }
 }
 
+function doubleClicked(){
+  let curr = findNodeByCoord(mouseX, mouseY);
+  if(!curr)
+    return;
+  if(dataInput.value())
+    curr.data = dataInput.value();
+}
+
 function keyPressed() {
   //// TODO: solve the first click is missed bug
 
