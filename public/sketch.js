@@ -12,7 +12,8 @@ function setup() {
   textSize(txtSize);
   createDomElements();
   let info = createDiv(`ENTER: Create Node<br>DELETE: Delete Hovered Node<br>DOUBLE CLICK: Change The Hovered Node's Data<br>SHIFT: Create and Edge Between Nodes(First press shift on first, then on second)<br><br>`);
-  info.position(0,height + 110)
+  info.position(0,height + 110);
+  info.style("color:"+pink+";")
 }
 
 function draw() {
