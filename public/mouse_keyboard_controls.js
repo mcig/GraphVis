@@ -9,18 +9,18 @@ function mouseDragged() {
   }
 }
 
-function doubleClicked(){
+function doubleClicked() {
   let curr = findNodeByCoord(mouseX, mouseY);
-  if(!curr)
+  if (!curr)
     return;
-  if(dataInput.value())
+  if (dataInput.value())
     curr.data = dataInput.value();
 }
 
 function keyPressed() {
   //// TODO: solve the first click is missed bug
 
-  if(mouseX>width||mouseX<0||mouseY>height||mouseY<0)
+  if (mouseX > width || mouseX < 0 || mouseY > height || mouseY < 0)
     return;
 
   if (keyCode === SHIFT) {
@@ -49,8 +49,12 @@ function keyPressed() {
     deleteNodeOnPress(idx, value.toString());
   } else if (keyCode === ENTER) {
     newNodeOnPress(mouseX, mouseY);
+  }else if(keyCode === 17){
+    startX = mouseX;
+    startY = mouseY;
   }
 }
+
 
 
 function findNodeByCoord(coordX, coordY) {
