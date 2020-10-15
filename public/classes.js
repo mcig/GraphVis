@@ -52,9 +52,9 @@ class Node {
       pop();
       line(this.x, this.y, connection.node.x, connection.node.y);
       */
-      drawLinkWithTriangle(this,connection.node);
+    let middleObj = drawLinkWithTriangle(this,connection.node);
       if (weightSlider.value()) //weighted unweighted check
-        text(connection.weight, middleX, middleY - 10);
+        text(connection.weight, middleObj.x, middleObj.y - 10);
     }
     //Draw node
     stroke(white);
@@ -79,4 +79,5 @@ function drawLinkWithTriangle(from,to,color = white){
   triangle(0, 5, 5, 0, 0, -5);
   pop();
   line(from.x, from.y, to.x, to.y);
+  return {x: middleX,y:middleY};
 }
