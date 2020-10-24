@@ -18,6 +18,17 @@ function mouseDragged() {
   }
 }
 
+function laserPointerDraw() {
+  //is called in sketch.js
+  if (keyIsDown(17)) {
+    drawLinkWithTriangle(
+      { x: startX, y: startY },
+      { x: mouseX, y: mouseY },
+      pink
+    );
+  }
+}
+
 function doubleClicked() {
   let curr = findNodeByCoord(mouseX, mouseY);
   if (!curr) return;
